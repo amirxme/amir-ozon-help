@@ -226,7 +226,7 @@
 
     .search-results {
       display: none;
-      margin-top: -40px;
+      margin-top: 0;
       margin-bottom: 60px;
     }
 
@@ -297,7 +297,9 @@
       font-weight: 700;
     }
 
-    /* CATEGORY PAGE */
+    .notice-button:hover {
+      background: #ddd;
+    }
 
     .back-button {
       background: none;
@@ -361,9 +363,8 @@
     .question-arrow {
       color: #555;
       font-size: 20px;
+      flex-shrink: 0;
     }
-
-    /* QUESTION PAGE */
 
     .article {
       max-width: 800px;
@@ -445,6 +446,14 @@
         font-size: 16px;
       }
 
+      .search-wrapper {
+        margin-bottom: 55px;
+      }
+
+      #searchInput {
+        height: 62px;
+      }
+
       .categories {
         grid-template-columns: 1fr;
       }
@@ -462,14 +471,27 @@
         width: 100%;
       }
 
-      .footer-inner {
+      .question-card {
         padding: 20px;
-        flex-direction: column;
-        gap: 10px;
+      }
+
+      .question-name {
+        font-size: 14px;
+        line-height: 1.4;
       }
 
       .answer-box {
         padding: 24px;
+      }
+
+      .answer-text {
+        font-size: 15px;
+      }
+
+      .footer-inner {
+        padding: 20px;
+        flex-direction: column;
+        gap: 10px;
       }
     }
   </style>
@@ -527,7 +549,7 @@
     </div>
 
 
-    <section>
+    <section id="categoriesSection">
 
       <div class="section-header">
 
@@ -545,6 +567,7 @@
       <div class="categories">
 
         <button class="category" onclick="openCategory('Заказы')">
+
           <span class="category-icon">▣</span>
 
           <div class="category-name">
@@ -554,10 +577,12 @@
           <div class="category-description">
             Приём, выдача и основные операции с заказами.
           </div>
+
         </button>
 
 
         <button class="category" onclick="openCategory('Возвраты')">
+
           <span class="category-icon">↩</span>
 
           <div class="category-name">
@@ -567,10 +592,12 @@
           <div class="category-description">
             Возврат товара, отмены и спорные ситуации.
           </div>
+
         </button>
 
 
         <button class="category" onclick="openCategory('Клиенты')">
+
           <span class="category-icon">○</span>
 
           <div class="category-name">
@@ -580,10 +607,12 @@
           <div class="category-description">
             Частые вопросы и нестандартные ситуации с клиентами.
           </div>
+
         </button>
 
 
         <button class="category" onclick="openCategory('Курьеры')">
+
           <span class="category-icon">→</span>
 
           <div class="category-name">
@@ -593,10 +622,12 @@
           <div class="category-description">
             Приём поставок и взаимодействие с курьерами.
           </div>
+
         </button>
 
 
         <button class="category" onclick="openCategory('Ошибки')">
+
           <span class="category-icon">!</span>
 
           <div class="category-name">
@@ -606,10 +637,12 @@
           <div class="category-description">
             Что делать, если система показывает ошибку.
           </div>
+
         </button>
 
 
         <button class="category" onclick="openCategory('Система')">
+
           <span class="category-icon">⌘</span>
 
           <div class="category-name">
@@ -619,6 +652,7 @@
           <div class="category-description">
             Работа с программами, сканером и оборудованием.
           </div>
+
         </button>
 
       </div>
@@ -629,9 +663,10 @@
     <div class="search-results" id="searchResults"></div>
 
 
-    <section class="notice">
+    <section class="notice" id="noticeSection">
 
       <div>
+
         <div class="notice-title">
           Не нашёл ответ?
         </div>
@@ -640,6 +675,7 @@
           Если нужной инструкции пока нет — сообщи Амиру,
           и она появится в базе.
         </div>
+
       </div>
 
       <button
@@ -719,8 +755,15 @@
 <footer>
 
   <div class="footer-inner">
-    <span>AMIR OZON-HELP</span>
-    <span>Внутренний сервис для сотрудников ПВЗ</span>
+
+    <span>
+      AMIR OZON-HELP
+    </span>
+
+    <span>
+      Внутренний сервис для сотрудников ПВЗ
+    </span>
+
   </div>
 
 </footer>
@@ -1022,6 +1065,12 @@
   const searchResults =
     document.getElementById("searchResults");
 
+  const categoriesSection =
+    document.getElementById("categoriesSection");
+
+  const noticeSection =
+    document.getElementById("noticeSection");
+
 
   searchInput.addEventListener("input", function() {
 
@@ -1035,9 +1084,18 @@
 
       searchResults.innerHTML = "";
 
+      categoriesSection.style.display = "";
+
+      noticeSection.style.display = "";
+
       return;
 
     }
+
+
+    categoriesSection.style.display = "none";
+
+    noticeSection.style.display = "none";
 
 
     const results =
@@ -1045,7 +1103,8 @@
 
         return (
           item.question.toLowerCase().includes(query) ||
-          item.category.toLowerCase().includes(query)
+          item.category.toLowerCase().includes(query) ||
+          item.answer.toLowerCase().includes(query)
         );
 
       });
