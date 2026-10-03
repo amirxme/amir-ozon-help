@@ -21,11 +21,6 @@
       --border: #242424;
       --text: #f5f5f5;
       --muted: #8c8c8c;
-      --accent: #ffffff;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -45,8 +40,6 @@
       cursor: pointer;
     }
 
-    /* HEADER */
-
     header {
       width: 100%;
       border-bottom: 1px solid var(--border);
@@ -65,8 +58,8 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
       color: var(--text);
+      text-decoration: none;
     }
 
     .logo-main {
@@ -77,14 +70,12 @@
 
     .logo-divider {
       color: #555;
-      font-size: 18px;
     }
 
     .logo-sub {
       font-size: 14px;
       font-weight: 600;
       color: #aaa;
-      letter-spacing: 0.3px;
     }
 
     .header-label {
@@ -94,16 +85,18 @@
       text-transform: uppercase;
     }
 
-    /* HERO */
-
     main {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 90px 28px 100px;
+      padding: 80px 28px 100px;
     }
 
-    .hero {
-      max-width: 850px;
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
     }
 
     .eyebrow {
@@ -132,8 +125,6 @@
       margin-bottom: 42px;
     }
 
-    /* SEARCH */
-
     .search-wrapper {
       position: relative;
       max-width: 760px;
@@ -160,7 +151,6 @@
       background: var(--surface);
       color: var(--text);
       font-size: 16px;
-      transition: 0.2s ease;
     }
 
     #searchInput::placeholder {
@@ -172,13 +162,10 @@
       background: #121212;
     }
 
-    /* SECTION */
-
     .section-header {
       display: flex;
       align-items: end;
       justify-content: space-between;
-      gap: 20px;
       margin-bottom: 22px;
     }
 
@@ -195,8 +182,6 @@
       font-size: 13px;
     }
 
-    /* CATEGORIES */
-
     .categories {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -211,10 +196,7 @@
       border-radius: 14px;
       color: var(--text);
       text-align: left;
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
+      transition: 0.2s ease;
     }
 
     .category:hover {
@@ -242,7 +224,43 @@
       line-height: 1.45;
     }
 
-    /* NOTICE */
+    .search-results {
+      display: none;
+      margin-top: -40px;
+      margin-bottom: 60px;
+    }
+
+    .search-results.visible {
+      display: block;
+    }
+
+    .result {
+      width: 100%;
+      text-align: left;
+      padding: 20px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      color: var(--text);
+      transition: 0.2s ease;
+    }
+
+    .result:hover {
+      background: var(--surface-hover);
+      border-color: #363636;
+    }
+
+    .result-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .result-category {
+      color: #666;
+      font-size: 12px;
+    }
 
     .notice {
       margin-top: 70px;
@@ -277,59 +295,118 @@
       border-radius: 9px;
       font-size: 13px;
       font-weight: 700;
+    }
+
+    /* CATEGORY PAGE */
+
+    .back-button {
+      background: none;
+      border: none;
+      color: #777;
+      font-size: 13px;
+      padding: 0;
+      margin-bottom: 40px;
+    }
+
+    .back-button:hover {
+      color: #fff;
+    }
+
+    .page-title {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 16px;
+    }
+
+    .page-description {
+      color: #777;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 45px;
+    }
+
+    .questions {
+      max-width: 850px;
+    }
+
+    .question-card {
+      width: 100%;
+      padding: 23px 24px;
+      margin-bottom: 9px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
       transition: 0.2s ease;
     }
 
-    .notice-button:hover {
-      background: #dcdcdc;
-    }
-
-    /* SEARCH RESULTS */
-
-    .search-results {
-      display: none;
-      margin-top: -45px;
-      margin-bottom: 60px;
-    }
-
-    .search-results.visible {
-      display: block;
-    }
-
-    .result {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 20px;
-      margin-bottom: 8px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--surface);
-      color: var(--text);
-    }
-
-    .result:hover {
+    .question-card:hover {
       background: var(--surface-hover);
+      border-color: #383838;
+      transform: translateX(2px);
     }
 
-    .result-title {
+    .question-name {
       font-size: 15px;
       font-weight: 700;
-      margin-bottom: 6px;
     }
 
-    .result-category {
+    .question-arrow {
+      color: #555;
+      font-size: 20px;
+    }
+
+    /* QUESTION PAGE */
+
+    .article {
+      max-width: 800px;
+    }
+
+    .article-category {
       color: #666;
       font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
     }
 
-    .no-results {
-      color: #666;
-      font-size: 14px;
-      padding: 20px 0;
+    .article-title {
+      font-size: clamp(36px, 6vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+      margin-bottom: 40px;
     }
 
-    /* FOOTER */
+    .answer-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 30px;
+    }
+
+    .answer-heading {
+      font-size: 13px;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .answer-text {
+      color: #c7c7c7;
+      font-size: 16px;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
 
     footer {
       border-top: 1px solid var(--border);
@@ -341,14 +418,12 @@
       padding: 24px 28px;
       display: flex;
       justify-content: space-between;
-      gap: 20px;
       color: #555;
       font-size: 12px;
     }
 
-    /* MOBILE */
-
     @media (max-width: 800px) {
+
       .header-inner {
         padding: 20px;
       }
@@ -390,6 +465,11 @@
       .footer-inner {
         padding: 20px;
         flex-direction: column;
+        gap: 10px;
+      }
+
+      .answer-box {
+        padding: 24px;
       }
     }
   </style>
@@ -397,56 +477,57 @@
 
 <body>
 
-  <header>
-    <div class="header-inner">
+<header>
+  <div class="header-inner">
 
-      <a href="#" class="logo">
-        <span class="logo-main">AMIR</span>
-        <span class="logo-divider">/</span>
-        <span class="logo-sub">OZON-HELP</span>
-      </a>
+    <a href="#" class="logo" onclick="showHome(); return false;">
+      <span class="logo-main">AMIR</span>
+      <span class="logo-divider">/</span>
+      <span class="logo-sub">OZON-HELP</span>
+    </a>
 
-      <span class="header-label">Внутренняя база ПВЗ</span>
+    <span class="header-label">
+      Внутренняя база ПВЗ
+    </span>
+
+  </div>
+</header>
+
+
+<main>
+
+  <!-- ГЛАВНАЯ -->
+
+  <section id="homePage" class="page active">
+
+    <div class="eyebrow">
+      AMIR OZON-HELP
+    </div>
+
+    <h1>
+      Если ты звонишь Амиру — сначала посмотри сюда.
+    </h1>
+
+    <p class="hero-text">
+      Быстрые ответы на самые частые вопросы сотрудников ПВЗ.
+      Найди нужную инструкцию и продолжай работать без звонка.
+    </p>
+
+    <div class="search-wrapper">
+
+      <span class="search-icon">⌕</span>
+
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Поиск по вопросам..."
+        autocomplete="off"
+      >
 
     </div>
-  </header>
 
 
-  <main>
-
-    <section class="hero">
-
-      <div class="eyebrow">
-        AMIR OZON-HELP
-      </div>
-
-      <h1>
-        Если ты звонишь Амиру — сначала посмотри сюда.
-      </h1>
-
-      <p class="hero-text">
-        Быстрые ответы на самые частые вопросы сотрудников ПВЗ.
-        Найди нужную инструкцию и продолжай работать без звонка.
-      </p>
-
-
-      <div class="search-wrapper">
-
-        <span class="search-icon">⌕</span>
-
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="Поиск по вопросам..."
-          autocomplete="off"
-        >
-
-      </div>
-
-    </section>
-
-
-    <section id="categories-section">
+    <section>
 
       <div class="section-header">
 
@@ -463,8 +544,7 @@
 
       <div class="categories">
 
-        <button class="category" data-category="Заказы">
-
+        <button class="category" onclick="openCategory('Заказы')">
           <span class="category-icon">▣</span>
 
           <div class="category-name">
@@ -474,12 +554,10 @@
           <div class="category-description">
             Приём, выдача и основные операции с заказами.
           </div>
-
         </button>
 
 
-        <button class="category" data-category="Возвраты">
-
+        <button class="category" onclick="openCategory('Возвраты')">
           <span class="category-icon">↩</span>
 
           <div class="category-name">
@@ -489,12 +567,10 @@
           <div class="category-description">
             Возврат товара, отмены и спорные ситуации.
           </div>
-
         </button>
 
 
-        <button class="category" data-category="Клиенты">
-
+        <button class="category" onclick="openCategory('Клиенты')">
           <span class="category-icon">○</span>
 
           <div class="category-name">
@@ -504,12 +580,10 @@
           <div class="category-description">
             Частые вопросы и нестандартные ситуации с клиентами.
           </div>
-
         </button>
 
 
-        <button class="category" data-category="Курьеры">
-
+        <button class="category" onclick="openCategory('Курьеры')">
           <span class="category-icon">→</span>
 
           <div class="category-name">
@@ -519,12 +593,10 @@
           <div class="category-description">
             Приём поставок и взаимодействие с курьерами.
           </div>
-
         </button>
 
 
-        <button class="category" data-category="Ошибки">
-
+        <button class="category" onclick="openCategory('Ошибки')">
           <span class="category-icon">!</span>
 
           <div class="category-name">
@@ -534,12 +606,10 @@
           <div class="category-description">
             Что делать, если система показывает ошибку.
           </div>
-
         </button>
 
 
-        <button class="category" data-category="Система">
-
+        <button class="category" onclick="openCategory('Система')">
           <span class="category-icon">⌘</span>
 
           <div class="category-name">
@@ -549,7 +619,6 @@
           <div class="category-description">
             Работа с программами, сканером и оборудованием.
           </div>
-
         </button>
 
       </div>
@@ -557,13 +626,12 @@
     </section>
 
 
-    <section class="search-results" id="searchResults"></section>
+    <div class="search-results" id="searchResults"></div>
 
 
     <section class="notice">
 
       <div>
-
         <div class="notice-title">
           Не нашёл ответ?
         </div>
@@ -572,155 +640,460 @@
           Если нужной инструкции пока нет — сообщи Амиру,
           и она появится в базе.
         </div>
-
       </div>
 
-      <button class="notice-button" id="suggestButton">
+      <button
+        class="notice-button"
+        onclick="alert('Сообщи Амиру, какого вопроса или инструкции тебе не хватает.')"
+      >
         Предложить вопрос
       </button>
 
     </section>
 
-  </main>
+  </section>
 
 
-  <footer>
+  <!-- СТРАНИЦА КАТЕГОРИИ -->
 
-    <div class="footer-inner">
+  <section id="categoryPage" class="page">
 
-      <span>AMIR OZON-HELP</span>
+    <button class="back-button" onclick="showHome()">
+      ← Вернуться на главную
+    </button>
 
-      <span>Внутренний сервис для сотрудников ПВЗ</span>
-
+    <div class="eyebrow">
+      Раздел
     </div>
 
-  </footer>
+    <h1 class="page-title" id="categoryTitle">
+      Заказы
+    </h1>
+
+    <p class="page-description" id="categoryDescription">
+      Все инструкции по работе с заказами.
+    </p>
+
+    <div class="questions" id="questionList"></div>
+
+  </section>
 
 
-  <script>
+  <!-- СТРАНИЦА ВОПРОСА -->
 
-    const searchInput = document.getElementById("searchInput");
-    const searchResults = document.getElementById("searchResults");
-    const categoriesSection = document.getElementById("categories-section");
+  <section id="questionPage" class="page">
 
-    const questions = [
-      {
-        title: "Как принять заказ?",
-        category: "Заказы"
-      },
-      {
-        title: "Как выдать заказ клиенту?",
-        category: "Заказы"
-      },
-      {
-        title: "Как оформить возврат?",
-        category: "Возвраты"
-      },
-      {
-        title: "Клиент хочет отменить заказ",
-        category: "Возвраты"
-      },
-      {
-        title: "Что делать, если клиент недоволен?",
-        category: "Клиенты"
-      },
-      {
-        title: "Что делать, если приехал курьер?",
-        category: "Курьеры"
-      },
-      {
-        title: "Что делать при ошибке сканирования?",
-        category: "Ошибки"
-      },
-      {
-        title: "Что делать, если не работает система?",
-        category: "Система"
-      }
-    ];
+    <button class="back-button" onclick="goBackToCategory()">
+      ← Вернуться к вопросам
+    </button>
+
+    <article class="article">
+
+      <div class="article-category" id="articleCategory">
+        Заказы
+      </div>
+
+      <h1 class="article-title" id="articleTitle">
+        Как принять заказ?
+      </h1>
+
+      <div class="answer-box">
+
+        <div class="answer-heading">
+          Инструкция
+        </div>
+
+        <div class="answer-text" id="articleAnswer">
+          Инструкция пока не добавлена.
+        </div>
+
+      </div>
+
+    </article>
+
+  </section>
+
+</main>
 
 
-    searchInput.addEventListener("input", function () {
+<footer>
 
-      const query = this.value.trim().toLowerCase();
+  <div class="footer-inner">
+    <span>AMIR OZON-HELP</span>
+    <span>Внутренний сервис для сотрудников ПВЗ</span>
+  </div>
 
-      if (!query) {
-        searchResults.classList.remove("visible");
-        searchResults.innerHTML = "";
-        return;
-      }
+</footer>
 
-      const results = questions.filter(function (question) {
+
+<script>
+
+  /*
+    ==========================================
+    БАЗА ВОПРОСОВ
+    ==========================================
+
+    ПОЗЖЕ ЗДЕСЬ БУДЕМ ДОБАВЛЯТЬ
+    НАСТОЯЩИЕ ВОПРОСЫ И ОТВЕТЫ.
+  */
+
+  const questions = [
+
+    {
+      id: 1,
+      category: "Заказы",
+      question: "Как принять заказ?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 2,
+      category: "Заказы",
+      question: "Как выдать заказ клиенту?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 3,
+      category: "Заказы",
+      question: "Что делать, если заказ не находится?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 4,
+      category: "Возвраты",
+      question: "Как оформить возврат?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 5,
+      category: "Возвраты",
+      question: "Клиент хочет отменить заказ",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 6,
+      category: "Клиенты",
+      question: "Что делать, если клиент не может получить заказ?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 7,
+      category: "Клиенты",
+      question: "Что делать в конфликтной ситуации?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 8,
+      category: "Курьеры",
+      question: "Как принять поставку от курьера?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 9,
+      category: "Курьеры",
+      question: "Что делать, если возникла проблема с поставкой?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 10,
+      category: "Ошибки",
+      question: "Что делать при ошибке сканирования?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 11,
+      category: "Ошибки",
+      question: "Заказ не отображается в системе",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 12,
+      category: "Система",
+      question: "Что делать, если не работает сканер?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 13,
+      category: "Система",
+      question: "Что делать, если не работает принтер?",
+      answer: "Инструкция пока не добавлена."
+    },
+
+    {
+      id: 14,
+      category: "Система",
+      question: "Что делать, если система не работает?",
+      answer: "Инструкция пока не добавлена."
+    }
+
+  ];
+
+
+  const categoryDescriptions = {
+
+    "Заказы":
+      "Приём, выдача и основные операции с заказами.",
+
+    "Возвраты":
+      "Возврат товара, отмены и спорные ситуации.",
+
+    "Клиенты":
+      "Частые вопросы и нестандартные ситуации с клиентами.",
+
+    "Курьеры":
+      "Приём поставок и взаимодействие с курьерами.",
+
+    "Ошибки":
+      "Что делать, если система показывает ошибку.",
+
+    "Система":
+      "Работа с программами, сканером и оборудованием."
+
+  };
+
+
+  let currentCategory = "";
+
+
+  function hideAllPages() {
+
+    document.querySelectorAll(".page").forEach(function(page) {
+      page.classList.remove("active");
+    });
+
+  }
+
+
+  function showHome() {
+
+    hideAllPages();
+
+    document
+      .getElementById("homePage")
+      .classList.add("active");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  function openCategory(category) {
+
+    currentCategory = category;
+
+    hideAllPages();
+
+    document
+      .getElementById("categoryPage")
+      .classList.add("active");
+
+
+    document.getElementById("categoryTitle").textContent =
+      category;
+
+
+    document.getElementById("categoryDescription").textContent =
+      categoryDescriptions[category] || "";
+
+
+    const list =
+      document.getElementById("questionList");
+
+
+    const categoryQuestions =
+      questions.filter(function(item) {
+        return item.category === category;
+      });
+
+
+    if (categoryQuestions.length === 0) {
+
+      list.innerHTML = `
+        <div class="page-description">
+          В этой категории пока нет вопросов.
+        </div>
+      `;
+
+    } else {
+
+      list.innerHTML =
+        categoryQuestions.map(function(item) {
+
+          return `
+            <button
+              class="question-card"
+              onclick="openQuestion(${item.id})"
+            >
+
+              <span class="question-name">
+                ${item.question}
+              </span>
+
+              <span class="question-arrow">
+                →
+              </span>
+
+            </button>
+          `;
+
+        }).join("");
+
+    }
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  function openQuestion(id) {
+
+    const item =
+      questions.find(function(question) {
+        return question.id === id;
+      });
+
+
+    if (!item) {
+      return;
+    }
+
+
+    hideAllPages();
+
+    document
+      .getElementById("questionPage")
+      .classList.add("active");
+
+
+    document.getElementById("articleCategory").textContent =
+      item.category;
+
+
+    document.getElementById("articleTitle").textContent =
+      item.question;
+
+
+    document.getElementById("articleAnswer").textContent =
+      item.answer;
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  function goBackToCategory() {
+
+    openCategory(currentCategory);
+
+  }
+
+
+  /*
+    ==========================================
+    ПОИСК
+    ==========================================
+  */
+
+  const searchInput =
+    document.getElementById("searchInput");
+
+  const searchResults =
+    document.getElementById("searchResults");
+
+
+  searchInput.addEventListener("input", function() {
+
+    const query =
+      this.value.trim().toLowerCase();
+
+
+    if (!query) {
+
+      searchResults.classList.remove("visible");
+
+      searchResults.innerHTML = "";
+
+      return;
+
+    }
+
+
+    const results =
+      questions.filter(function(item) {
 
         return (
-          question.title.toLowerCase().includes(query) ||
-          question.category.toLowerCase().includes(query)
+          item.question.toLowerCase().includes(query) ||
+          item.category.toLowerCase().includes(query)
         );
 
       });
 
 
-      searchResults.classList.add("visible");
-
-      if (results.length === 0) {
-
-        searchResults.innerHTML = `
-          <div class="no-results">
-            Ничего не найдено. Возможно, этой инструкции ещё нет.
-          </div>
-        `;
-
-        return;
-      }
+    searchResults.classList.add("visible");
 
 
-      searchResults.innerHTML = results.map(function (question) {
+    if (results.length === 0) {
+
+      searchResults.innerHTML = `
+        <div class="page-description">
+          Ничего не найдено. Возможно, этой инструкции
+          пока нет в базе.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    searchResults.innerHTML =
+      results.map(function(item) {
 
         return `
-          <button class="result">
+          <button
+            class="result"
+            onclick="openQuestion(${item.id})"
+          >
+
             <div class="result-title">
-              ${question.title}
+              ${item.question}
             </div>
 
             <div class="result-category">
-              ${question.category}
+              ${item.category}
             </div>
+
           </button>
         `;
 
       }).join("");
 
-    });
+  });
 
 
-    document.querySelectorAll(".category").forEach(function (button) {
-
-      button.addEventListener("click", function () {
-
-        const category = this.dataset.category;
-
-        searchInput.value = category;
-
-        searchInput.dispatchEvent(new Event("input"));
-
-        window.scrollTo({
-          top: searchInput.offsetTop - 100,
-          behavior: "smooth"
-        });
-
-      });
-
-    });
-
-
-    document.getElementById("suggestButton").addEventListener("click", function () {
-
-      alert(
-        "Напиши Амиру, какого вопроса или инструкции тебе не хватает."
-      );
-
-    });
-
-  </script>
+</script>
 
 </body>
 </html>
